@@ -1,9 +1,11 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {createLogger} from 'redux-logger';
+import AppReducer from '../reducers/AppReducer';
 
 const loggerMiddleware = createLogger();
-const appStore = createStore(applyMiddleware(thunkMiddleware, loggerMiddleware), /* preloadedState, */
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const initstate = {};
+
+const appStore = createStore(AppReducer, initstate,  applyMiddleware(thunkMiddleware, loggerMiddleware));
 
 export default appStore;
